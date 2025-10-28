@@ -28,11 +28,12 @@ class MainApp(QMainWindow, Ui_MainWindow):
 
         self.btnDeleteRecordDb.clicked.connect(self.deleteRecordDb)
 
-        self.btnExport.clicked.connect(self.export)
+        self.btnExport.clicked.connect(self.exportFromDb)
+        self.btnImport.clicked.connect(self.importToDb)
 
         self.loadListDb()
 
-    def export(self):
+    def exportFromDb(self):
         fileName = self.inputCurrentFile.text()
         recordDbname = self.comboBoxListDb.currentText()
 
@@ -53,12 +54,40 @@ class MainApp(QMainWindow, Ui_MainWindow):
             command = builder.getExportCommand(configDb, fileName)
             try:
                 commandservice.exec(command)
+                self.message.setText('Export z bazy do pliku wykonany!')
             except:
                 print('Blad wykonywania komendy: ' + command)
         else:
             print('Blad, brak buildera: ' + configDb.type_db)
 
         self.reloadFilesList()
+
+    def importToDb(self):
+        fileName = self.inputCurrentFile.text()
+        recordDbname = self.comboBoxListDb.currentText()
+
+        if fileName == '' or recordDbname == '':
+            self.message.setText("Brak wybranej nazwy pliku lub bazy")
+            return
+
+        serviceConfigDb = ConfigDbService()
+        configDb = serviceConfigDb.findByName(recordDbname)
+        if isinstance(configDb, ConfigDbDto) == False:
+            return
+        
+        dbBuildService = DbBuild()
+        builder = dbBuildService.findByName(configDb.type_db)
+
+        if isinstance(builder, AbstractDbManager):
+            commandservice = CommandService()
+            command = builder.getImportCommand(configDb, fileName)
+            try:
+                commandservice.exec(command)
+                self.message.setText('Import z pliku do bazy wykonany!')
+            except:
+                print('Blad wykonywania komendy: ' + command)
+        else:
+            print('Blad, brak buildera: ' + configDb.type_db)
 
     def deleteRecordDb(self):
         recordDbname = self.comboBoxListDb.currentText()
