@@ -37,3 +37,12 @@ alembic revision --autogenerate -m "initial migration"
 alembic upgrade head
 ```
 
+
+### Generate app exec file
+
+Exec file
+```
+pyinstaller --noconsole --onefile --windowed --icon=icon.png app.py
+```
+
+generated file: /dist/app
