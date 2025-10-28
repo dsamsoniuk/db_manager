@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Db Manager</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="label">
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Strona glowna</string>
+     <string>Manager baz danych</string>
     </property>
    </widget>
    <widget class="QPushButton" name="showFormAddDb">

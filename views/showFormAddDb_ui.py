@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '/var/www/dbmanager/views/showFormAddDb.ui'
+# Form implementation generated from reading ui file '/var/www/db_manager/views/showFormAddDb.ui'
 #
 # Created by: PyQt6 UI code generator 6.4.2
 #
@@ -71,7 +71,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Dodaj baze danych"))
         self.label.setText(_translate("Dialog", "Dodaj nowa baze danych"))
         self.label_2.setText(_translate("Dialog", "Host"))
         self.label_3.setText(_translate("Dialog", "Port"))

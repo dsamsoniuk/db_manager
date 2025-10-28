@@ -69,8 +69,8 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "Strona glowna"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Db Manager"))
+        self.label.setText(_translate("MainWindow", "Manager baz danych"))
         self.showFormAddDb.setText(_translate("MainWindow", "Dodaj baze danych"))
         self.pushButton.setText(_translate("MainWindow", "load"))
         self.btnExport.setText(_translate("MainWindow", "Exportuj do pliku"))

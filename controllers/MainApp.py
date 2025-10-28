@@ -10,6 +10,7 @@ from builders.AbstractDbManager import AbstractDbManager
 from dto.ConfigDbDto import ConfigDbDto
 from services.ConfigDbService import ConfigDbService
 from services.CommandService import CommandService
+from services.AppConfigService import AppConfigService
 
 class MainApp(QMainWindow, Ui_MainWindow):
 
@@ -18,7 +19,10 @@ class MainApp(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
-        self.inputDirPath.setText("/var/www/")
+        appService = AppConfigService()
+        config = appService.get()
+
+        self.inputDirPath.setText(config.default_path)
         self.pushButton.clicked.connect(self.reloadFilesList)
 
         self.treeFile.setHeaderLabel("SQL Files")
@@ -32,6 +36,7 @@ class MainApp(QMainWindow, Ui_MainWindow):
         self.btnImport.clicked.connect(self.importToDb)
 
         self.loadListDb()
+        self.reloadFilesList()
 
     def exportFromDb(self):
         fileName = self.inputCurrentFile.text()
@@ -116,8 +121,14 @@ class MainApp(QMainWindow, Ui_MainWindow):
                 tree_widget.addTopLevelItem(item)
 
     def reloadFilesList(self):
+        appService = AppConfigService()
         dir = self.inputDirPath.text()
-        self.load_sql_files(self.treeFile, dir)
+
+        try:
+            self.load_sql_files(self.treeFile, dir)
+            appService.set(default_path = self.inputDirPath.text())
+        except:
+            self.message.setText('Nie udalo sie pobrac plików')
 
     def open_dialog(self):
             dialog = AddDbDialog()
