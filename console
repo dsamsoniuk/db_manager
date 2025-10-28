@@ -1,0 +1,67 @@
+#!/bin/bash
+# ========================================
+# Console command helper for project scripts
+# Usage:
+#   ./console.sh generate-gui
+#   ./console.sh install
+# ========================================
+
+# Ścieżka do katalogu ze skryptami
+SCRIPTS_DIR="./scripts"
+
+# Sprawdź, czy katalog istnieje
+if [ ! -d "$SCRIPTS_DIR" ]; then
+  echo "❌ Błąd: katalog '$SCRIPTS_DIR' nie istnieje."
+  exit 1
+fi
+
+# Główna logika
+case "$1" in
+  gui)
+    echo "🛠 Uruchamianie generowania GUI..."
+    bash "$SCRIPTS_DIR/generateGui.sh"
+    ;;
+  install)
+    echo "📦 Uruchamianie instalacji..."
+    source "$SCRIPTS_DIR/install.sh"
+    ;;
+  freeze)
+    echo "📦 Uruchamianie export pip..."
+    pip3 freeze > requirements.txt
+    ;;
+  designer)
+    echo "📦 Uruchamianie qt designer..."
+    bash "$SCRIPTS_DIR/lunchQtDesigner.sh"
+    ;;
+  start)
+    echo "📦 Uruchamianie projekt..."
+    python app.py
+    ;;
+  env)
+    echo "📦 Uruchamianie środowiska..."
+    source venv/bin/activate
+    source "$SCRIPTS_DIR/setGlobalVars.sh"
+    ;;
+  exit)
+    echo "📦 Wyjdz ze środowiska..."
+    deactivate
+    ;;
+  migrate)
+    echo "📦 migracja danych"
+    alembic upgrade head
+    ;;
+  *)
+    echo "Dostępne komendy:"
+    echo "ENV"
+    echo ". ./console env         -- wejdz do środowiska"
+    echo ". ./console exit        -- wyjdz ze środowiska"
+    echo ". ./console install     -- instalacja środowiska"
+    echo "PROJECT"
+    echo "./console start         -- start projekt"
+    echo "./console migrate       -- start migrate"
+    echo "./console freeze        -- export pip requirements to file"
+    echo "./console gui           -- wygeneruj gui z plików ui stworzonych w qt designer"
+    echo "./console designer      -- uruchom qt designer"
+    exit 1
+    ;;
+esac
