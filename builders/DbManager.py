@@ -1,5 +1,6 @@
 from builders.MySqlDbManager import MySqlDbManager
 from builders.MongoDbManager import MongoDbManager
+from builders.MariaDbManager import MariaDbManager
 from builders.AbstractDbManager import AbstractDbManager
 from dto.ConfigDbDto import ConfigDbDto
 from builders.AbstractDbManager import AbstractDbManager
@@ -11,6 +12,7 @@ class DbManager:
         self.list = [
             MySqlDbManager(),
             MongoDbManager(),
+            MariaDbManager(),
         ]
 
     def getList(self) -> list :
