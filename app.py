@@ -1,14 +1,10 @@
 import sys
 from PyQt6.QtWidgets import QApplication
-# from dotenv import load_dotenv
-from controllers.MainApp import MainApp
-# from services.MemoryService import MemoryService
-# load_dotenv()
+from controllers.MainController import MainController
 
 def main():
-
     app = QApplication(sys.argv)
-    window = MainApp()
+    window = MainController()
     window.show()
     sys.exit(app.exec())
 

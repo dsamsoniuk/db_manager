@@ -1,7 +1,7 @@
 from services.MemoryService import MemoryService
 from dto.ConfigDbDto import ConfigDbDto
 
-class ConfigDbService:
+class ConfigDbRepository:
 
     def __init__(self):
         self.memoryService = MemoryService()

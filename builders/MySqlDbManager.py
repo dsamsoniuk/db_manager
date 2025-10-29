@@ -5,14 +5,17 @@ class MySqlDbManager(AbstractDbManager):
     
     name: str = 'mysql'
 
-    def getExportCommand(self, dto: ConfigDbDto, fileName: str) -> str:
+    def setConfig(self, dto: ConfigDbDto) -> None:
+        self.config = dto
+
+    def getExportCommand(self, fileName: str) -> str:
         """
         Export to file 
         """
-        return f"mysqldump -u {dto.user} --password={dto.db_password} --port={dto.port} --no-tablespaces --host={dto.host} {dto.db_name} > {fileName}"
+        return f"mysqldump -u {self.config.user} --password={self.config.db_password} --port={self.config.port} --no-tablespaces --host={self.config.host} {self.config.db_name} > {fileName}"
     
-    def getImportCommand(self, dto: ConfigDbDto, fileName: str) -> str:
+    def getImportCommand(self, fileName: str) -> str:
         """
         Import from file to DB
         """
-        return f"mysql -u {dto.user} --password={dto.db_password} --port={dto.port} --host={dto.host} {dto.db_name} < {fileName}"
+        return f"mysql -u {self.config.user} --password={self.config.db_password} --port={self.config.port} --host={self.config.host} {self.config.db_name} < {fileName}"

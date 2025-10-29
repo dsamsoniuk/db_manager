@@ -3,31 +3,24 @@ from views.showFormAddDb import Ui_Dialog
 from PyQt6 import uic
 from PyQt6.QtWidgets import QDialog
 from dto.ConfigDbDto import ConfigDbDto
-from builders.DbBuild import DbBuild
-from services.ConfigDbService import ConfigDbService
-import os, sys
+from builders.DbManager import DbManager
+from services.ConfigDbRepository import ConfigDbRepository
+import globals
 
-if getattr(sys, 'frozen', False):
-    BASE_DIR = sys._MEIPASS
-else:
-    BASE_DIR = os.path.abspath(".")
-
-VIEWS_DIR = os.path.join(BASE_DIR, "views")
-
-
-class AddDbDialog(QDialog, Ui_Dialog):
+class DbConfigController(QDialog, Ui_Dialog):
     def __init__(self):
         super().__init__()
-        uic.loadUi(VIEWS_DIR + "/showFormAddDb.ui", self) 
+        
+        uic.loadUi(globals.VIEWS_DIR + "/showFormAddDb.ui", self) 
 
         self.buttonBox.accepted.connect(self.save)
 
-        builder = DbBuild()
+        builder = DbManager()
         for db in builder.getList():
             self.comboBox.addItem(db.name)
 
     def getMessage(self):
-        return "Baza została pomyślnie dodana!" #self.lineEdit.text()
+        return "Baza została pomyślnie dodana!"
     
     def save(self) -> None:
 
@@ -40,5 +33,5 @@ class AddDbDialog(QDialog, Ui_Dialog):
         dto.db_name = self.db_name.text()
         dto.db_password = self.db_password.text()
 
-        serviceConfigDb = ConfigDbService()
-        serviceConfigDb.add(dto)
+        configDbRepository = ConfigDbRepository()
+        configDbRepository.add(dto)
