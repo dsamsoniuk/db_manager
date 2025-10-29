@@ -15,9 +15,9 @@ class AddNewDbConfigEvent(AbstractEvent):
         dto.host = self.application.host.text()
         dto.port = self.application.port.text()
         dto.user = self.application.db_user.text()
-        dto.name = self.application.name.text()
         dto.db_name = self.application.db_name.text()
         dto.db_password = self.application.db_password.text()
+        dto.name = dto.type_db + ": " + self.application.name.text()
 
         configDbRepository = ConfigDbRepository()
         configDbRepository.add(dto)

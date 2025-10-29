@@ -51,5 +51,5 @@ class MainController(QMainWindow, Ui_MainWindow):
         list = configDbRepository.findAll()
 
         for dbConfig in list:
-            labelName = dbConfig.type_db + " : " + dbConfig.name
+            labelName = dbConfig.name
             self.comboBoxListDb.addItem(labelName , dbConfig.type_db)

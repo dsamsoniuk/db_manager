@@ -16,7 +16,7 @@ class Ui_Dialog(object):
         self.buttonBox = QtWidgets.QDialogButtonBox(parent=Dialog)
         self.buttonBox.setGeometry(QtCore.QRect(290, 440, 81, 51))
         self.buttonBox.setOrientation(QtCore.Qt.Orientation.Vertical)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.StandardButton.Cancel|QtWidgets.QDialogButtonBox.StandardButton.Ok)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.StandardButton.Cancel|QtWidgets.QDialogButtonBox.StandardButton.Save)
         self.buttonBox.setObjectName("buttonBox")
         self.label = QtWidgets.QLabel(parent=Dialog)
         self.label.setGeometry(QtCore.QRect(150, 10, 181, 17))
@@ -71,9 +71,9 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dodaj baze danych"))
+        Dialog.setWindowTitle(_translate("Dialog", "Add new db config"))
         self.label.setText(_translate("Dialog", "Add DB Config"))
-        self.label_4.setText(_translate("Dialog", "Typ bazy danych"))
+        self.label_4.setText(_translate("Dialog", "Type"))
         self.label_2.setText(_translate("Dialog", "db host (localhost)"))
         self.label_3.setText(_translate("Dialog", "db port"))
         self.label_5.setText(_translate("Dialog", "db name"))

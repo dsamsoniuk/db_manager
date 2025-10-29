@@ -11,7 +11,7 @@ class DbManager:
     def __init__(self):
         self.list = [
             MySqlDbManager(),
-            MongoDbManager(),
+            # MongoDbManager(),
             MariaDbManager(),
         ]
 

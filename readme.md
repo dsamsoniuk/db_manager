@@ -1,7 +1,12 @@
 
 # Db manager
 
+Manager database allowing user  to export and import data from file sql. 
+Application and be extended for new db like mongodb or other dbs in /builders/dbManager.py
+
 Python with library Qt
+
+![alt text](screen.png "Title")
 
 
 ### Envirement
