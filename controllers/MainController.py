@@ -24,7 +24,7 @@ class MainController(QMainWindow, Ui_MainWindow):
         self.inputDirPath.setText(config.default_path)
 
         self.reloadFileListEvent = ReloadFileListEvent(self)
-        self.pushButton.clicked.connect(self.reloadFileListEvent.run)
+        self.btnLoadFiles.clicked.connect(self.reloadFileListEvent.run)
 
         self.openDialogEvent = OpenDialogEvent(self)
         self.showFormAddDb.clicked.connect(self.openDialogEvent.run)
@@ -42,7 +42,7 @@ class MainController(QMainWindow, Ui_MainWindow):
         self.treeFile.itemClicked.connect(self.eventClickFileName.run)
 
         self.loadListDb()
-        self.pushButton.click()
+        self.btnLoadFiles.click()
 
     def loadListDb(self):
         self.comboBoxListDb.clear()

@@ -32,4 +32,4 @@ class ExportEvent(AbstractEvent):
         except Exception as e:
             self.application.textBrowser.setText(repr(e))
 
-        self.application.pushButton.click()
+        self.application.btnLoadFiles.click()
