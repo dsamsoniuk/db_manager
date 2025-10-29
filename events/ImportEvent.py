@@ -15,19 +15,19 @@ class ImportEvent(AbstractEvent):
         title = self.application.comboBoxListDb.currentText()
 
         if fileName == '' or title == '':
-            self.application.textBrowser.setText("Brak wybranej nazwy pliku lub bazy")
+            self.application.textBrowser.setText("Please chooice filename and db")
             return
         
         configDbService = DbManager()
         dbManager = configDbService.getManagerByTitle(title)
 
         if isinstance(dbManager, AbstractDbManager) == False:
-            self.application.textBrowser.setText("Brak db managera")
+            self.application.textBrowser.setText("No manager")
 
         try:
             commandservice = CommandService()
             commandservice.exec(dbManager.getImportCommand(fileName))
-            self.application.textBrowser.setText('Import z bazy do pliku wykonany!')
+            self.application.textBrowser.setText('Import from DB done!')
 
         except Exception as e:
             self.application.textBrowser.setText(repr(e))

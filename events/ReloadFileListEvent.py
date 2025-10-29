@@ -24,4 +24,4 @@ class ReloadFileListEvent(AbstractEvent):
 
             appService.set(default_path = self.application.inputDirPath.text())
         except:
-            self.application.textBrowser.setText('Nie udalo sie pobrac plików')
+            self.application.textBrowser.setText('Loading files has fail')
