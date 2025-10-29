@@ -43,7 +43,7 @@ class MainApp(QMainWindow, Ui_MainWindow):
         recordDbname = self.comboBoxListDb.currentText()
 
         if fileName == '' or recordDbname == '':
-            self.message.setText("Brak wybranej nazwy pliku lub bazy")
+            self.textBrowser.setText("Brak wybranej nazwy pliku lub bazy")
             return
 
         serviceConfigDb = ConfigDbService()
@@ -59,9 +59,9 @@ class MainApp(QMainWindow, Ui_MainWindow):
             command = builder.getExportCommand(configDb, fileName)
             try:
                 commandservice.exec(command)
-                self.message.setText('Export z bazy do pliku wykonany!')
-            except:
-                print('Blad wykonywania komendy: ' + command)
+                self.textBrowser.setText('Export z bazy do pliku wykonany!')
+            except Exception as e:
+                self.textBrowser.setText(repr(e))
         else:
             print('Blad, brak buildera: ' + configDb.type_db)
 
@@ -72,7 +72,7 @@ class MainApp(QMainWindow, Ui_MainWindow):
         recordDbname = self.comboBoxListDb.currentText()
 
         if fileName == '' or recordDbname == '':
-            self.message.setText("Brak wybranej nazwy pliku lub bazy")
+            self.textBrowser.setText("Brak wybranej nazwy pliku lub bazy")
             return
 
         serviceConfigDb = ConfigDbService()
@@ -88,9 +88,9 @@ class MainApp(QMainWindow, Ui_MainWindow):
             command = builder.getImportCommand(configDb, fileName)
             try:
                 commandservice.exec(command)
-                self.message.setText('Import z pliku do bazy wykonany!')
-            except:
-                print('Blad wykonywania komendy: ' + command)
+                self.textBrowser.setText('Import z pliku do bazy wykonany!')
+            except Exception as e:
+                self.textBrowser.setText(repr(e))
         else:
             print('Blad, brak buildera: ' + configDb.type_db)
 
@@ -128,11 +128,11 @@ class MainApp(QMainWindow, Ui_MainWindow):
             self.load_sql_files(self.treeFile, dir)
             appService.set(default_path = self.inputDirPath.text())
         except:
-            self.message.setText('Nie udalo sie pobrac plików')
+            self.textBrowser.setText('Nie udalo sie pobrac plików')
 
     def open_dialog(self):
             dialog = AddDbDialog()
             if dialog.exec(): 
                 value = dialog.getMessage()
-                self.message.setText(value)
+                self.textBrowser.setText(value)
                 self.loadListDb()

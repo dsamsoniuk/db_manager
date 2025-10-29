@@ -5,11 +5,20 @@ from PyQt6.QtWidgets import QDialog
 from dto.ConfigDbDto import ConfigDbDto
 from builders.DbBuild import DbBuild
 from services.ConfigDbService import ConfigDbService
+import os, sys
+
+if getattr(sys, 'frozen', False):
+    BASE_DIR = sys._MEIPASS
+else:
+    BASE_DIR = os.path.abspath(".")
+
+VIEWS_DIR = os.path.join(BASE_DIR, "views")
+
 
 class AddDbDialog(QDialog, Ui_Dialog):
     def __init__(self):
         super().__init__()
-        uic.loadUi("views/showFormAddDb.ui", self) 
+        uic.loadUi(VIEWS_DIR + "/showFormAddDb.ui", self) 
 
         self.buttonBox.accepted.connect(self.save)
 

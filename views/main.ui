@@ -92,8 +92,8 @@
     <property name="geometry">
      <rect>
       <x>460</x>
-      <y>320</y>
-      <width>151</width>
+      <y>300</y>
+      <width>131</width>
       <height>25</height>
      </rect>
     </property>
@@ -104,9 +104,9 @@
    <widget class="QPushButton" name="btnImport">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>380</y>
-      <width>151</width>
+      <x>620</x>
+      <y>300</y>
+      <width>131</width>
       <height>25</height>
      </rect>
     </property>
@@ -150,19 +150,6 @@
      <string>Wybrany plik sql</string>
     </property>
    </widget>
-   <widget class="QLabel" name="message">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>510</y>
-      <width>271</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Odpowiedz wykonaniej akcji</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnDeleteRecordDb">
     <property name="geometry">
      <rect>
@@ -174,6 +161,16 @@
     </property>
     <property name="text">
      <string>usuń wpis o bazie</string>
+    </property>
+   </widget>
+   <widget class="QTextBrowser" name="textBrowser">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>370</y>
+      <width>291</width>
+      <height>161</height>
+     </rect>
     </property>
    </widget>
   </widget>
