@@ -1,9 +1,7 @@
-
-
 from events.AbstractEvent import AbstractEvent
 from views.main import Ui_MainWindow 
 from services.AppConfigService import AppConfigService
-import os
+from services.FileService import FileService
 from PyQt6.QtWidgets import QTreeWidgetItem
 
 class ReloadFileListEvent(AbstractEvent):
@@ -12,16 +10,15 @@ class ReloadFileListEvent(AbstractEvent):
         self.application = application
 
     def run(self):
-        appService = AppConfigService()
+        appConfigService = AppConfigService()
+        fileService = FileService()
+
+        self.application.treeFile.clear()
+
         dir = self.application.inputDirPath.text()
 
-        try:
-            self.application.treeFile.clear()
-            for name in os.listdir(dir):
-                if name.endswith(".sql"):
-                    item = QTreeWidgetItem([name])
-                    self.application.treeFile.addTopLevelItem(item)
+        for name in fileService.getFileListInDir(dir, 'sql'):
+            item = QTreeWidgetItem([name])
+            self.application.treeFile.addTopLevelItem(item)
 
-            appService.set(default_path = self.application.inputDirPath.text())
-        except:
-            self.application.textBrowser.setText('Loading files has fail')
+        appConfigService.set(default_path = self.application.inputDirPath.text())

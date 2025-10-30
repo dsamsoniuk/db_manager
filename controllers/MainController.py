@@ -16,7 +16,7 @@ class MainController(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
-        self.treeFile.setHeaderLabel("SQL Files")
+        self.treeFile.setHeaderLabel("Files")
 
         appService = AppConfigService()
         config = appService.get()
