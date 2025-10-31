@@ -63,6 +63,6 @@ Exec file
 
 generated file: /dist/app
 
-### Debug
+### Debugging vscode
 
-Display/view app.py and click F5, work for vscode
+Display/view/edit app.py, add breakpoint and click F5
