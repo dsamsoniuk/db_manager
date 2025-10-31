@@ -1,7 +1,7 @@
 
 from builders.AbstractDbManager import AbstractDbManager
 from builders.DbManager import DbManager
-from services.CommandService import CommandService
+from services import CommandService
 from events.AbstractEvent import AbstractEvent
 from views.main import Ui_MainWindow 
 

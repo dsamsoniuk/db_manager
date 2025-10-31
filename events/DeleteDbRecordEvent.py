@@ -2,7 +2,7 @@
 
 from events.AbstractEvent import AbstractEvent
 from views.main import Ui_MainWindow 
-from services.ConfigDbRepository import ConfigDbRepository
+from services import ConfigDbRepository
 
 class DeleteDbRecordEvent(AbstractEvent):
 

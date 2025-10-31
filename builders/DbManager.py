@@ -4,7 +4,7 @@ from builders.MariaDbManager import MariaDbManager
 from builders.AbstractDbManager import AbstractDbManager
 from dto.ConfigDbDto import ConfigDbDto
 from builders.AbstractDbManager import AbstractDbManager
-from services.ConfigDbRepository import ConfigDbRepository
+from services import ConfigDbRepository
 
 class DbManager:
 

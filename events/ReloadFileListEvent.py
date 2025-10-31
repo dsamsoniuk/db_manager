@@ -1,7 +1,6 @@
 from events.AbstractEvent import AbstractEvent
 from views.main import Ui_MainWindow 
-from services.AppConfigService import AppConfigService
-from services import FileService
+from services import AppConfigService, FileService
 from PyQt6.QtWidgets import QTreeWidgetItem
 
 class ReloadFileListEvent(AbstractEvent):

@@ -1,7 +1,7 @@
 
 from events.AbstractEvent import AbstractEvent
 from dto.ConfigDbDto import ConfigDbDto
-from services.ConfigDbRepository import ConfigDbRepository
+from services import ConfigDbRepository
 from views.showFormAddDb import Ui_Dialog 
 
 class AddNewDbConfigEvent(AbstractEvent):
