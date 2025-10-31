@@ -62,3 +62,7 @@ Exec file
 ```
 
 generated file: /dist/app
+
+### Debug
+
+Display/view app.py and click F5, work for vscode
