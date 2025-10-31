@@ -1,4 +1,4 @@
-from services.MemoryService import MemoryService
+from services import MemoryService
 from dto.AppConfigDto import AppConfigDto
 from dto.ConfigDbDto import ConfigDbDto
 

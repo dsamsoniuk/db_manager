@@ -1,7 +1,7 @@
 from events.AbstractEvent import AbstractEvent
 from views.main import Ui_MainWindow 
 from services.AppConfigService import AppConfigService
-from services.FileService import FileService
+from services import FileService
 from PyQt6.QtWidgets import QTreeWidgetItem
 
 class ReloadFileListEvent(AbstractEvent):
@@ -17,7 +17,7 @@ class ReloadFileListEvent(AbstractEvent):
 
         dir = self.application.inputDirPath.text()
 
-        for name in fileService.getFileListInDir(dir, 'sql'):
+        for name in fileService.get_file_list(dir, 'sql'):
             item = QTreeWidgetItem([name])
             self.application.treeFile.addTopLevelItem(item)
 
